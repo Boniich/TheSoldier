@@ -66,7 +66,7 @@ private:
 	Rifle rifle;
 	ShotGun shootGun;
 public:
-	void takeWeapon();
+	void takeWeapon(Weapon* weapon);
 	void leftWeapon();
 	void shootWeapon();
 	void showWeaponName();
@@ -85,7 +85,7 @@ bool Soldier::isThereWeapon() {
 	}
 }
 
-void Soldier::takeWeapon() {
+void Soldier::takeWeapon(Weapon* weapon) {
 
 	int option = 0;
 
@@ -96,58 +96,12 @@ void Soldier::takeWeapon() {
 		cout << "5- Volver a Atras\n";
 		cin >> option;
 	}
-
-	while (option != 5) {
-		system("cls");
-		cout << "\n";
-		cout << "Por favor, escoja el arma que desea utilizar: \n";
-		cout << "1- Revolver \n";
-		cout << "2- Rifle \n";
-		cout << "3- Escopeta \n";
-
+	else {
+		weaponPointer = weapon;
+		cout << "El arma seleccionada es: ", weaponPointer->showWeaponName();
+		cout << "\n5- Volver a Atras\n";
 		cin >> option;
-
-		if (option == 1) {
-			
-			weaponPointer = &gun;
-
-			system("cls");
-
-			cout << "El arma seleccionada es: ", weaponPointer->showWeaponName();
-
-			
-			cout << "\nPor favor, Seleccione una option: \n";
-			cout << "5- Volver a Atras\n";
-			cin >> option;
-		}
-		else if (option == 2) {
-			
-			weaponPointer = &rifle;
-			
-			system("cls");
-
-			cout << "El arma seleccionada es: ", weaponPointer->showWeaponName();
-
-			cout << "\nPor favor, Seleccione una option: \n";
-			cout << "5- Volver a Atras\n";
-			cin >> option;
-
-		}
-		else if (option == 3) {
-			
-			weaponPointer = &shootGun;
-			
-			system("cls");
-
-			cout << "El arma seleccionada es: ", weaponPointer->showWeaponName();
-
-			cout << "\nPor favor, Seleccione una option: \n";
-			cout << "5- Volver a Atras\n";
-			cin >> option;
-		}
-
 	}
-
 }
 
 void Soldier::leftWeapon() {
@@ -230,6 +184,7 @@ int main() {
 
 	int option;
 	Soldier soldier;
+	Gun* gun = new Gun();
 
 	while (1 == 1) {
 		system("cls");
@@ -244,6 +199,39 @@ int main() {
 		cout << "X- Salir \n";
 		cin >> option;
 
+
+		if (option == 1) {
+			system("cls");
+			cout << "\n";
+			cout << "Por favor, escoja el arma que desea utilizar: \n";
+			cout << "1- Revolver \n";
+			cout << "2- Rifle \n";
+			cout << "3- Escopeta \n";
+			cout << "5- Volver a Atras\n";
+			cin >> option;
+
+			if (option == 1) {
+				soldier.takeWeapon(gun);
+			}
+			else if (option == 2) {
+
+			}
+			else {
+
+			}
+		}
+		else if (option == 2) {
+
+		}
+		else if (option == 3) {
+
+		}
+		else if (option == 4) {
+			soldier.showWeaponName();
+		}
+
+
+		/*
 		switch (option)
 		{
 		case 1:
@@ -260,7 +248,7 @@ int main() {
 			break;
 		default:
 			break;
-		}
+		}*/
 	}
 
 	
