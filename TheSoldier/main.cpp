@@ -62,17 +62,11 @@ ShotGun::ShotGun() {
 class Soldier {
 private:
 	Weapon* weaponPointer = NULL;
-	Gun gun;
-	Rifle rifle;
-	ShotGun shootGun;
 public:
 	void takeWeapon(Weapon* weapon);
 	void leftWeapon();
 	void shootWeapon();
 	void showWeaponName();
-
-
-private:
 	bool isThereWeapon();
 };
 
@@ -87,58 +81,24 @@ bool Soldier::isThereWeapon() {
 
 void Soldier::takeWeapon(Weapon* weapon) {
 
-	int option = 0;
+	int option;
 
-	if (isThereWeapon()) {
-		system("cls");
-		cout << "El soldado ya tiene un arma en sus manos...";
-		cout << "\nPor favor, Seleccione una option: \n";
-		cout << "5- Volver a Atras\n";
-		cin >> option;
-	}
-	else {
-		weaponPointer = weapon;
-		cout << "El arma seleccionada es: ", weaponPointer->showWeaponName();
-		cout << "\n5- Volver a Atras\n";
-		cin >> option;
-	}
+	weaponPointer = weapon;
+	cout << "El arma seleccionada es: ", weaponPointer->showWeaponName();
+	cout << "\n5- Volver a Atras\n";
+	cin >> option;
 }
 
 void Soldier::leftWeapon() {
 
 	int option = 0;
 
-	while (option != 5) {
-
-		if (isThereWeapon()) {
-			system("cls");
-			cout << "\n";
-			cout << "El soldado ya tiene un arma en sus manos...";
-			cout << "\nDeseas dejar esta arma? \n";
-
-			cout << "1- Dejar Arma\n";
-			cout << "5- Volver a Atras\n";
-			cin >> option;
-
-			if (option == 1) {
-				weaponPointer = NULL;
-				cout << "\n";
-				cout << "El arma ha sido dejada\n";
-				cout << "5- Volver a Atras\n";
-				cin >> option;
-			}
-		}
-		else {
-			cout << "\n";
-			cout << "El soldado no tiene un arma en sus manos...";
-			cout << "\nPor favor, Seleccione una option: \n";
-
-			cout << "5- Volver a Atras\n";
-			cin >> option;
-		}
-	}
-
-
+	weaponPointer = NULL;
+	cout << "\n";
+	cout << "El arma ha sido dejada\n";
+	cout << "5- Volver a Atras\n";
+	cin >> option;
+		
 }
 
 void Soldier::showWeaponName() {
@@ -185,6 +145,8 @@ int main() {
 	int option;
 	Soldier soldier;
 	Gun* gun = new Gun();
+	Rifle* rifle = new Rifle();;
+	ShotGun* shootGun = new ShotGun();;
 
 	while (1 == 1) {
 		system("cls");
@@ -201,54 +163,71 @@ int main() {
 
 
 		if (option == 1) {
-			system("cls");
-			cout << "\n";
-			cout << "Por favor, escoja el arma que desea utilizar: \n";
-			cout << "1- Revolver \n";
-			cout << "2- Rifle \n";
-			cout << "3- Escopeta \n";
-			cout << "5- Volver a Atras\n";
-			cin >> option;
 
-			if (option == 1) {
-				soldier.takeWeapon(gun);
-			}
-			else if (option == 2) {
 
+			if (soldier.isThereWeapon()) {
+				system("cls");
+				cout << "\n";
+				cout << "El soldado ya tiene un arma en sus manos...";
+				cout << "\nPor favor, Seleccione una option: \n";
+				cout << "5- Volver a Atras\n";
+				cin >> option;
 			}
 			else {
+				system("cls");
+				cout << "\n";
+				cout << "Por favor, escoja el arma que desea utilizar: \n";
+				cout << "1- Revolver \n";
+				cout << "2- Rifle \n";
+				cout << "3- Escopeta \n";
+				cout << "5- Volver a Atras\n";
+				cin >> option;
+				system("cls");
 
+				if (option == 1) {
+					soldier.takeWeapon(gun);
+				}
+				else if (option == 2) {
+					soldier.takeWeapon(rifle);
+				}
+				else if(option == 3) {
+					soldier.takeWeapon(shootGun);
+				}
 			}
+
 		}
 		else if (option == 2) {
 
+			if (soldier.isThereWeapon()) {
+				system("cls");
+				cout << "\n";
+				cout << "El soldado ya tiene un arma en sus manos...";
+				cout << "\nDeseas dejar esta arma? \n";
+
+				cout << "1- Dejar Arma\n";
+				cout << "5- Volver a Atras\n";
+				cin >> option;
+
+				if (option == 1) {
+					soldier.leftWeapon();
+				}
+			}
+			else {
+				cout << "\n";
+				cout << "El soldado no tiene un arma en sus manos...";
+				cout << "\nPor favor, Seleccione una option: \n";
+
+				cout << "5- Volver a Atras\n";
+				cin >> option;
+			}
+			
 		}
 		else if (option == 3) {
-
+			soldier.shootWeapon();
 		}
 		else if (option == 4) {
 			soldier.showWeaponName();
 		}
-
-
-		/*
-		switch (option)
-		{
-		case 1:
-			soldier.takeWeapon();
-			break;
-		case 2:
-			soldier.leftWeapon();
-			break;
-		case 3:
-			soldier.shootWeapon();
-			break;
-		case 4:
-			soldier.showWeaponName();
-			break;
-		default:
-			break;
-		}*/
 	}
 
 	
