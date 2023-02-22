@@ -62,6 +62,9 @@ ShotGun::ShotGun() {
 class Soldier {
 private:
 	Weapon* weaponPointer = NULL;
+	Gun gun;
+	Rifle rifle;
+	ShotGun shootGun;
 public:
 	void takeWeapon();
 	void leftWeapon();
@@ -87,6 +90,7 @@ void Soldier::takeWeapon() {
 	int option = 0;
 
 	if (isThereWeapon()) {
+		system("cls");
 		cout << "El soldado ya tiene un arma en sus manos...";
 		cout << "\nPor favor, Seleccione una option: \n";
 		cout << "5- Volver a Atras\n";
@@ -94,7 +98,7 @@ void Soldier::takeWeapon() {
 	}
 
 	while (option != 5) {
-
+		system("cls");
 		cout << "\n";
 		cout << "Por favor, escoja el arma que desea utilizar: \n";
 		cout << "1- Revolver \n";
@@ -104,18 +108,25 @@ void Soldier::takeWeapon() {
 		cin >> option;
 
 		if (option == 1) {
-			Gun gun;
+			
 			weaponPointer = &gun;
-			showWeaponName();
 
+			system("cls");
+
+			cout << "El arma seleccionada es: ", weaponPointer->showWeaponName();
+
+			
 			cout << "\nPor favor, Seleccione una option: \n";
 			cout << "5- Volver a Atras\n";
 			cin >> option;
 		}
 		else if (option == 2) {
-			Rifle rifle;
+			
 			weaponPointer = &rifle;
-			showWeaponName();
+			
+			system("cls");
+
+			cout << "El arma seleccionada es: ", weaponPointer->showWeaponName();
 
 			cout << "\nPor favor, Seleccione una option: \n";
 			cout << "5- Volver a Atras\n";
@@ -123,9 +134,12 @@ void Soldier::takeWeapon() {
 
 		}
 		else if (option == 3) {
-			ShotGun shootGun;
+			
 			weaponPointer = &shootGun;
-			showWeaponName();
+			
+			system("cls");
+
+			cout << "El arma seleccionada es: ", weaponPointer->showWeaponName();
 
 			cout << "\nPor favor, Seleccione una option: \n";
 			cout << "5- Volver a Atras\n";
@@ -137,49 +151,88 @@ void Soldier::takeWeapon() {
 }
 
 void Soldier::leftWeapon() {
-	cout << "No hace nada";
+
+	int option = 0;
+
+	while (option != 5) {
+
+		if (isThereWeapon()) {
+			system("cls");
+			cout << "\n";
+			cout << "El soldado ya tiene un arma en sus manos...";
+			cout << "\nDeseas dejar esta arma? \n";
+
+			cout << "1- Dejar Arma\n";
+			cout << "5- Volver a Atras\n";
+			cin >> option;
+
+			if (option == 1) {
+				weaponPointer = NULL;
+				cout << "\n";
+				cout << "El arma ha sido dejada\n";
+				cout << "5- Volver a Atras\n";
+				cin >> option;
+			}
+		}
+		else {
+			cout << "\n";
+			cout << "El soldado no tiene un arma en sus manos...";
+			cout << "\nPor favor, Seleccione una option: \n";
+
+			cout << "5- Volver a Atras\n";
+			cin >> option;
+		}
+	}
+
+
 }
 
 void Soldier::showWeaponName() {
-	cout << "El arma seleccionada es: ", weaponPointer->showWeaponName();
+
+	int option = 0;
+
+	if (!isThereWeapon()) {
+		cout << "El soldado no tiene un arma en sus manos...";
+		cout << "\nPor favor, Seleccione una option: \n";
+
+		cout << "5- Volver a Atras\n";
+		cin >> option;
+	}
+	else {
+		cout << "El arma seleccionada es: ", weaponPointer->showWeaponName();
+		
+		cout << "\nPor favor, Seleccione una option: \n";
+
+		cout << "5- Volver a Atras\n";
+		cin >> option;
+	}
+
+	
 }
 
 void Soldier::shootWeapon() {
-	weaponPointer->shootWeapon();
+
+	int option;
+
+	if (weaponPointer) {
+		weaponPointer->shootWeapon();
+	}
+	else {
+		cout << "Parece que el soldado no tiene un arma en sus manos \n";
+	}
+
+	cout << "\n 5- Volver a Atras\n";
+	cin >> option;
 }
 
 
 int main() {
 
-
-	// no funciona
-	// Gun gun;
-	//gun.shootWeapon();
-	//no funciona
-	//Gun* gun = new Gun();
-	//gun->shootWeapon();
-
-	
-	//Gun gun;
-	//weaponPointer = &gun;
-
-	//Rifle rifle;
-	//weaponPointer = &rifle;
-	/*
-	Weapon* weaponPointer;
-
-	ShotGun shotGun;
-	weaponPointer = &shotGun;
-
-	cout << "Name Weapon: ", weaponPointer->showWeaponName();
-	cout << "\n";
-	cout << "Shoot sound: ", weaponPointer->shootWeapon();
-	*/
-
 	int option;
 	Soldier soldier;
 
 	while (1 == 1) {
+		system("cls");
 		cout << "\n";
 		cout << "-== Bienvenido al campo de entrenamiento, Soldado ==- \n";
 		cout << "¿Que desea hacer? \n";
