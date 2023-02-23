@@ -125,18 +125,7 @@ void Soldier::showWeaponName() {
 }
 
 void Soldier::shootWeapon() {
-
-	int option;
-
-	if (weaponPointer) {
-		weaponPointer->shootWeapon();
-	}
-	else {
-		cout << "Parece que el soldado no tiene un arma en sus manos \n";
-	}
-
-	cout << "\n 5- Volver a Atras\n";
-	cin >> option;
+	weaponPointer->shootWeapon();
 }
 
 
@@ -223,7 +212,17 @@ int main() {
 			
 		}
 		else if (option == 3) {
-			soldier.shootWeapon();
+
+			if (soldier.isThereWeapon()) {
+				soldier.shootWeapon();
+			}
+			else {
+				cout << "Parece que el soldado no tiene un arma en sus manos \n";
+			}
+
+			cout << "\n5- Volver a Atras\n";
+			cin >> option;
+
 		}
 		else if (option == 4) {
 			soldier.showWeaponName();
