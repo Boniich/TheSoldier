@@ -80,25 +80,12 @@ bool Soldier::isThereWeapon() {
 }
 
 void Soldier::takeWeapon(Weapon* weapon) {
-
-	int option;
-
 	weaponPointer = weapon;
-	cout << "El arma seleccionada es: ", weaponPointer->showWeaponName();
-	cout << "\n5- Volver a Atras\n";
-	cin >> option;
+	showWeaponName();
 }
 
 void Soldier::leftWeapon() {
-
-	int option = 0;
-
 	weaponPointer = NULL;
-	cout << "\n";
-	cout << "El arma ha sido dejada\n";
-	cout << "5- Volver a Atras\n";
-	cin >> option;
-		
 }
 
 void Soldier::showWeaponName() {
@@ -156,12 +143,18 @@ int main() {
 
 				if (option == 1) {
 					soldier.takeWeapon(gun);
+					cout << "\n5- Volver a Atras\n";
+					cin >> option;
 				}
 				else if (option == 2) {
 					soldier.takeWeapon(rifle);
+					cout << "\n5- Volver a Atras\n";
+					cin >> option;
 				}
 				else if(option == 3) {
 					soldier.takeWeapon(shootGun);
+					cout << "\n5- Volver a Atras\n";
+					cin >> option;
 				}
 			}
 
@@ -179,7 +172,14 @@ int main() {
 				cin >> option;
 
 				if (option == 1) {
+
+					system("cls");
 					soldier.leftWeapon();
+
+					cout << "\n";
+					cout << "El arma ha sido dejada\n";
+					cout << "5- Volver a Atras\n";
+					cin >> option;
 				}
 			}
 			else {
