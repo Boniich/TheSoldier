@@ -135,6 +135,9 @@
     <ClInclude Include="soldier.h" />
     <ClInclude Include="weapon.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="C:\Users\ezequ\Downloads\Diagrama sin título.drawio.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

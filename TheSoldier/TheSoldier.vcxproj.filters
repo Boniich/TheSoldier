@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Documentation">
+      <UniqueIdentifier>{ba53e845-6d71-4ebf-9035-8f54339c290e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation\Diagram">
+      <UniqueIdentifier>{fa3367dd-06a2-42e3-854b-eb57f4c4ae6c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -32,5 +38,10 @@
     <ClInclude Include="menu.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="C:\Users\ezequ\Downloads\Diagrama sin título.drawio.png">
+      <Filter>Documentation\Diagram</Filter>
+    </Image>
   </ItemGroup>
 </Project>
