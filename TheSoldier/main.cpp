@@ -99,14 +99,13 @@ void Soldier::shootWeapon() {
 
 int main() {
 
-	int option;
+	string option;
 	Soldier soldier;
 	Gun* gun = new Gun();
 	Rifle* rifle = new Rifle();;
 	ShotGun* shootGun = new ShotGun();;
 
-	while (1 == 1) {
-		system("cls");
+	while (option != "x") {
 		cout << "\n";
 		cout << "-== Bienvenido al campo de entrenamiento, Soldado ==- \n";
 		cout << "¿Que desea hacer? \n";
@@ -118,8 +117,7 @@ int main() {
 		cout << "X- Salir \n";
 		cin >> option;
 
-
-		if (option == 1) {
+		if (option == "1") {
 
 
 			if (soldier.isThereWeapon()) {
@@ -129,6 +127,7 @@ int main() {
 				cout << "\nPor favor, Seleccione una option: \n";
 				cout << "5- Volver a Atras\n";
 				cin >> option;
+				system("cls");
 			}
 			else {
 				system("cls");
@@ -141,25 +140,25 @@ int main() {
 				cin >> option;
 				system("cls");
 
-				if (option == 1) {
+				if (option == "1") {
 					soldier.takeWeapon(gun);
 					cout << "\n5- Volver a Atras\n";
 					cin >> option;
 				}
-				else if (option == 2) {
+				else if (option == "2") {
 					soldier.takeWeapon(rifle);
 					cout << "\n5- Volver a Atras\n";
 					cin >> option;
 				}
-				else if(option == 3) {
+				else if(option == "3") {
 					soldier.takeWeapon(shootGun);
 					cout << "\n5- Volver a Atras\n";
 					cin >> option;
 				}
+				system("cls");
 			}
-
 		}
-		else if (option == 2) {
+		else if (option == "2") {
 
 			if (soldier.isThereWeapon()) {
 				system("cls");
@@ -170,8 +169,10 @@ int main() {
 				cout << "1- Dejar Arma\n";
 				cout << "5- Volver a Atras\n";
 				cin >> option;
+				system("cls");
+				
 
-				if (option == 1) {
+				if (option == "1") {
 
 					system("cls");
 					soldier.leftWeapon();
@@ -180,6 +181,7 @@ int main() {
 					cout << "El arma ha sido dejada\n";
 					cout << "5- Volver a Atras\n";
 					cin >> option;
+					system("cls");
 				}
 			}
 			else {
@@ -190,10 +192,11 @@ int main() {
 
 				cout << "5- Volver a Atras\n";
 				cin >> option;
+				system("cls");
 			}
 			
 		}
-		else if (option == 3) {
+		else if (option == "3") {
 
 			system("cls");
 			if (soldier.isThereWeapon()) {
@@ -205,9 +208,10 @@ int main() {
 
 			cout << "\n5- Volver a Atras\n";
 			cin >> option;
+			system("cls");
 
 		}
-		else if (option == 4) {
+		else if (option == "4") {
 
 			system("cls");
 			if (soldier.isThereWeapon()) {
@@ -222,7 +226,14 @@ int main() {
 
 			cout << "\n5- Volver a Atras\n";
 			cin >> option;
+			system("cls");
 			
+		}
+		else if (option == "x") {
+			EXIT_SUCCESS();
+		}
+		else {
+			cout << "\nOption no valida, vuelve a elegir: \n";
 		}
 	}
 
